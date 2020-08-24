@@ -1,0 +1,40 @@
+table {
+  width: 100%;
+}
+
+#popup-button {
+  color: white;
+  background-color: #4b4b4b;
+  border: 1px solid black;
+}
+
+.emp{
+  margin-bottom: 10px;
+}
+
+.btn-emp{
+  margin-left: 20px;
+  margin-bottom: 10px;
+  width: 100px;
+  height: 30px
+}
+
+.filterby{
+  margin-left: 15px;
+}
+
+.done {
+  float: right;
+  margin-top: 2px;
+  margin-right: 5px;
+  width: 75px;
+}
+
+.search-text{
+  margin-top: 100px;
+}
+
+.main-filter{
+  margin-top: 100px;
+}
+

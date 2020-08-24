@@ -1,0 +1,13 @@
+#title{
+  background-color: lightgray;
+}
+
+.mat-dialog-title{
+  margin-left: 20px;
+  padding-top: 10px;
+}
+
+.dialog-close{
+  float: right;
+  margin-right: 20px;
+}

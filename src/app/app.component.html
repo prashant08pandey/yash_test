@@ -1,0 +1,108 @@
+<app-header></app-header>
+<div class="row">
+  <div class="col-2 main-filter">
+    <h4 class="filterby">Filter By</h4>
+    <app-dropdown [title] = "locationTitle" [dropdownElements] = "locations" (parentItems)="selectedChange($event, 'location')">
+    </app-dropdown>
+    <app-dropdown [title]="sillTitle" [dropdownElements] = "skills" (parentItems)="selectedChange($event, 'skills')">
+    </app-dropdown>
+    <app-dropdown [title]="techTitle" [dropdownElements] = "technologies" (parentItems)="selectedChange($event, 'technology')">
+    </app-dropdown>
+    <button class="btn btn-primary done" (click)="filterList()">Done</button>
+    <button class="btn btn-outline-primary done" (click)="cancel()">Cancel</button>
+  </div>
+  <div class="col-10">
+    <h2 class="search-text">Search the right candidate from the below list.</h2>
+    <div class="emp">
+      <span>
+        Employee List
+      </span>
+      <button class="btn btn-outline-primary btn-emp">Add</button>
+      <button class="btn btn-outline-primary btn-emp">Delete</button>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                        [aria-label]="checkboxLabel()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)"
+                        [aria-label]="checkboxLabel(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <!-- Designation Column -->
+      <ng-container matColumnDef="designation">
+        <th mat-header-cell *matHeaderCellDef> Designation </th>
+        <td mat-cell *matCellDef="let element"> {{element.designation}} </td>
+      </ng-container>
+
+      <!-- Skills Column -->
+      <ng-container matColumnDef="skills">
+        <th mat-header-cell *matHeaderCellDef> Skills </th>
+        <td mat-cell *matCellDef="let element"> {{element.skills}} </td>
+      </ng-container>
+
+      <!-- Technologies Column -->
+      <ng-container matColumnDef="technologies">
+        <th mat-header-cell *matHeaderCellDef> Technologies </th>
+        <td mat-cell *matCellDef="let element"> {{element.technologies}} </td>
+      </ng-container>
+
+      <!-- Availability Column -->
+      <ng-container matColumnDef="availability">
+        <th mat-header-cell *matHeaderCellDef> Availability </th>
+        <td mat-cell *matCellDef="let element"> {{element.availability}} </td>
+      </ng-container>
+
+      <!-- Location Column -->
+      <ng-container matColumnDef="baseLocation">
+        <th mat-header-cell *matHeaderCellDef> Location </th>
+        <td mat-cell *matCellDef="let element"> {{element.baseLocation}} </td>
+      </ng-container>
+
+      <!-- Relocate Column -->
+      <ng-container matColumnDef="openRelocate">
+        <th mat-header-cell *matHeaderCellDef> Relocate </th>
+        <td mat-cell *matCellDef="let element"> {{element.openRelocate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="openModal">
+        <th mat-header-cell  *matHeaderCellDef > Action </th>
+        <td mat-cell *matCellDef="let row" >
+          <button mat-button id="popup-button" (click)="openModal(row, $event)">Details</button>
+        </td>
+      </ng-container>
+
+      <!--ng-container matColumnDef="popup-button-holder">
+        <button mat-raised-button id="popup-button" (click)="openModal()"></button>
+      </ng-container-->
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+          (click)="selection.toggle(row)">
+      </tr>
+    </table>
+  </div>
+</div>

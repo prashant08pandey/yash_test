@@ -1,0 +1,46 @@
+<div style="background: #f6f6f6; height:50px; width:auto">
+<h4 mat-dialog-title>Employee Details</h4>
+<mat-dialog-content class="mat-typography">
+  <mat-grid-list cols="3" rowHeight="2:1">
+    <mat-grid-tile>
+      <div>
+        <h3>Name</h3>
+        <p>{{dialogData['name']}}</p>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div>
+        <h3>Designation</h3>
+        <p>{{dialogData['designation']}}</p>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div>
+        <h3>Technologies</h3>
+        <p>{{dialogData['technologies']}}</p>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div>
+        <h3>Availability</h3>
+        <p>{{dialogData['availability']}}</p>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div>
+        <h3>Base Location</h3>
+        <p>{{dialogData['baseLocation']}}</p>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div>
+        <h3>Open Relocate</h3>
+        <p>{{dialogData['openRelocate']}}</p>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-dialog-content>
+  <mat-dialog-actions class="dialog-close">
+    <button class="mat-raised-button"(click)="close()">Close</button>
+  </mat-dialog-actions>
+</div>
